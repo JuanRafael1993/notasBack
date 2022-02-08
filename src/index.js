@@ -10,7 +10,7 @@ const { mongoose } = require("./database");
 const port = process.env.PORT || 3003;
 
 //middlewares
-app.use(express.json());
+app.use(express.json({ limit: '2MB' }));
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
 app.use(
@@ -24,8 +24,8 @@ app.use(
 
 //routes
 app.use("/user/register", require("./routes/route.register.js"));
-app.use("/user/login", require("./routes/route.login"));
-app.use("/user/addCard", require("./routes/route.addCard"));
+app.use("/user/login", require("./routes/route.login.js"));
+app.use("/user/card", require("./routes/route.card.js"));
 
 //static files
 
