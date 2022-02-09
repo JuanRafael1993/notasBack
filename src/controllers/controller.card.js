@@ -30,12 +30,15 @@ module.exports = {
 		try {
 			const { titulo, nota } = req.body;
 
-			let respuesta = await Card.findByIdAndUpdate(req.headers.id, {
+			console.log(titulo);
+			console.log(nota);
+
+			await Card.findByIdAndUpdate(req.headers.id, {
 				titulo,
 				nota,
 			});
 
-			res.json(respuesta);
+			res.json('la nota se a actualizado');
 		} catch (error) {
 			res.json(Boom.badData(error));
 		}
