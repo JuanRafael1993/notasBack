@@ -33,13 +33,15 @@ module.exports = {
 			console.log(titulo);
 			console.log(nota);
 
-			await Card.findByIdAndUpdate(req.headers.id, {
+			const si = await Card.findByIdAndUpdate(req.headers.id, {
 				titulo,
 				nota,
 			});
 
 			res.json('la nota se a actualizado');
+			console.log(si);
 		} catch (error) {
+			console.log('entra qui');
 			res.json(Boom.badData(error));
 		}
 	},
